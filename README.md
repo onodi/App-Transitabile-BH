@@ -1,2 +1,3 @@
-# App-Transitabile-BH
-Repositório do aplicativo Transitabile-BH para a Prefeitura de Belo Horizonte
+# TransitabileBH
+
+Repositório do projeto do aplicativo Transitabile da prefeitura municipal de Belo Horizonte.
