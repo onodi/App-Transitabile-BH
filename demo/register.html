@@ -61,7 +61,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label class="">
-              <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; visibility: hidden;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Concordo com os <a href="#">termos</a>
+              <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input id="termos" type="checkbox" style="position: absolute; visibility: hidden;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Concordo com os <a href="terms.html">termos</a>
             </label>
           </div>
         </div>
@@ -90,9 +90,9 @@ PREFEITURA BELO HORIZONTE<br>
 ESTACIONAMENTO ROTATIVO BELO HORIZONTE<br>    
     <br><br>
 www.transitabile.com.br
-    <br><br>
+    <br>
 contato@transitabile.com.br    
-<br>
+<br><br>
 <p>versão 3.1</p>
 <br>
 </div>
@@ -104,6 +104,14 @@ contato@transitabile.com.br
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
+<script>
+var terms = window.localStorage.getItem("Valor");
+if (terms == "true") {
+  console.log(terms);
+  var ValidaTermos = document.getElementById('termos');
+  ValidaTermos.checked = true;
+}  
+</script>
 <script>
 
 	$(function () {

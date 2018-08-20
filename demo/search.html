@@ -204,7 +204,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Vagas Disponíveis</h3>
+          <!--<h3 class="box-title">Vagas Disponíveis</h3>-->
 
           <div class="box-tools pull-right">
             
@@ -230,9 +230,9 @@
     <div class="pull-right hidden-xs">
       <b>Versão</b> 3.1.0
     </div>
-	PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA<br>
-	Secretaria Municipal de Mobilidade Urbana<br>
-	http://www.braganca.sp.gov.br<br>
+  PREFEITURA MUNICIPAL DE BELO HORIZONTE<br>
+	BHTRANS - Empresa de Transporte Público de BH<br>
+	www.bhtrans.pbh.gov.br<br>
 	<br><br>
 	Transitabile Sistema de Controle de Vagas Automotivas Ltda<br>
 	CNPJ: 28.729.743/0001-16<br>
@@ -249,151 +249,122 @@
 </div>
 <!-- ./wrapper -->
 
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- jQuery 3 -->
 <script>
 
-function myMap() {
+//    variaveis globais para o pin de localizacao do mapa
+var latAtual, lngAtual;
+var ruaAtual = "", areaAtual = "";
+var geocoder;
 
-	var locations = [{lat: -22.958908, lng: -46.538740, amout: 152, value: "R$ 0,00", loc: "Av.Antonio Pires Pimentel", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.954636, lng: -46.540587, amout: 183, value: "R$ 0,00", loc: "Rua Coronel Téofilo Leme", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.953891, lng: -46.541512, amout: 156, value: "R$ 0,00", loc: "Rua João Leme", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.950505, lng: -46.542832, amout: 35, value: "R$ 0,00", loc: "Rua Barão de Juquery", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.953344, lng: -46.542258, amout: 52, value: "R$ 0,00", loc: "Rua Candido Rodrigues", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.959017, lng: -46.541378, amout: 60, value: "R$ 0,00", loc: "Rua Cel.Leme", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.957084, lng: -46.541384, amout: 63, value: "R$ 0,00", loc: "Rua Cel.Osorio", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.959565, lng: -46.542210, amout: 5, value: "R$ 0,00", loc: "Travessa São Luiz", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.958856, lng: -46.536542, amout: 20, value: "R$ 0,00", loc: "Rua Liberdade", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.957327, lng: -46.540542, amout: 5, value: "R$ 0,00", loc: "Rua Dr. Tosta", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.955678, lng: -46.542327, amout: 59, value: "R$ 0,00", loc: "Praça Raul Leme", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.956794, lng: -46.544168, amout: 5, value: "R$ 0,00", loc: "Rua Ladislau Leme", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.955053, lng: -46.544351, amout: 8, value: "R$ 0,00", loc: "Travessa Riachuelo", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.955033, lng: -46.535764, amout: 33, value: "R$ 0,00", loc: "Rua Luis Nardy", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.953808, lng: -46.543758, amout: 20, value: "R$ 0,00", loc: "Rua Antono da Cruz", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.952864, lng: -46.543037, amout: 5, value: "R$ 0,00", loc: "Rua Nicolino Nacarati", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.952082, lng: -46.540198, amout: 12, value: "R$ 0,00", loc: "Rua Atibaia", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.952143, lng: -46.542132, amout: 37, value: "R$ 0,00", loc: "Praça Princesa Isabel", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.951189, lng: -46.541373, amout: 29, value: "R$ 0,00", loc: "Rua Clemente Ferreira", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.950106, lng: -46.541048, amout: 30, value: "R$ 0,00", loc: "Travessa Itália", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" },
-	{lat: -22.948285, lng: -46.542437, amout: 40, value: "R$ 0,00", loc: "Rua Dona Carolina", area: "central", h1: "8:00 ás 18:00h", h2: "8:00 ás 13:00h", d: "Liberado", p: "2:00h" }];
+function logout() {
+    window.localStorage.clear();
+	window.location.href = "index.html";	
+}
 
+
+function myMap() { 
+	var locations = [{
+//        lat: -22.958908, 
+        lat: latAtual, 
+//        lng: -46.538740, 
+        lng: lngAtual, 
+        amout: 152, 
+        value: "R$ 2,00", 
+//        loc: "Av.Antonio Pires Pimentel", 
+        loc: ruaAtual, 
+//        area: "central", 
+        area: areaAtual, 
+        h1: "8:00 ás 18:00h", 
+        h2: "8:00 ás 13:00h", 
+        d: "Liberado", 
+        p: "2:00h" 
+    }];
     var map = new google.maps.Map(document.getElementById('googleMap'), {
       zoom: 14,
-      center: new google.maps.LatLng(locations[2].lat, locations[2].lng),
+      center: new google.maps.LatLng(locations[0].lat, locations[0].lng),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-
     var infowindow = new google.maps.InfoWindow();
-
     var marker, i;
-
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
 		label: {
-			text: locations[i].amout + "",
+//			text: locations[i].amout + "",
+			text: locations[i].loc + "",
 			color: 'black',
 			fontSize: "10px"
 		  },
         map: map
       });
-
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
 			window.localStorage.setItem( "parklotSelected", JSON.stringify(locations[i]) );
-			infowindow.setContent(locations[i].loc + "<br>" + locations[i].value + "<br>" + locations[i].amout + " vagas<br><br>" + "<a href='vehicles.html'><b>Estacionar</b></a>");
+			infowindow.setContent(locations[i].loc + "<br>" + locations[i].value + "<br>" + "<a href='vehicles.html'><b>Estacionar</b></a>");
 			infowindow.open(map, marker);
         }
       })(marker, i));
     }
-
-
-
-}
-
-function logout() {
-
-	window.localStorage.clear();
-	window.location.href = "index.html";
-	
-}
-
-</script>
-
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-
-var geocoder;
+}    
 
 $(document).ready( function ( ) {
-
 	if (navigator.geolocation) {
 		geocoder = new google.maps.Geocoder();
 		navigator.geolocation.getCurrentPosition(codeLatLng);
 	} else {
 		$("#locationInfo").html( "Sua localização atual é:<br><br><b>Indefinido</b><br><br>" );
 	}
-	
 });
-
 function onGeoLocError( error ) {
-
 	$("#locationInfo").html( "Sua localização atual é:<br><br><b>Não foi possivel definir, erro: " + error + "</b><br><br>" );
-
 }
-
-
-function codeLatLng( position ) {
-
+function codeLatLng( position ) {    
 	var lat = position.coords.latitude;
-	var lng = position.coords.longitude;
-	
+	var lng = position.coords.longitude;    
 	var end = "";
-
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-      console.log(results)
-        if (results[1]) {
+      if (status == google.maps.GeocoderStatus.OK) {          
+//          atualiza variaveis do pin de localizacao
+        latAtual = position.coords.latitude;
+        lngAtual = position.coords.longitude;  
+        ruaAtual = results[0].address_components[1].short_name;
+        areaAtual = results[0].address_components[2].short_name;          
+        if (results[0]) {
          //formatted address
-         end = results[0].formatted_address;
+            end = results[0].formatted_address;
         //find country name
              for (var i=0; i<results[0].address_components.length; i++) {
-            for (var b=0;b<results[0].address_components[i].types.length;b++) {
-
-            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-                if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
-                    //this is the object you are looking for
-                    city= results[0].address_components[i];
-                    break;
+                for (var b=0;b<results[0].address_components[i].types.length;b++) {
+                //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                    if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+                        //this is the object you are looking for
+                        city= results[0].address_components[i];
+                        break;
+                    }
                 }
-            }
-        }
+             }
         //city data
         //end = end + "<br>" + city.short_name + "<br>" + city.long_name;
-
-
         } else {
 			$("#locationInfo").html( "Sua localização atual é:<br><br><b>Indefinido</b><br><br>" );
           alert("No results found");
         }
       } else {
-
         var value = status;
-
 		    $("#locationInfo").html( '<b>Sua localização atual é:</b><br><br><input type="text" name="locationInput" class="form-control" id="locationInput" placeholder="Localização" value="' + value + '"/><br> <a href="vehicles.html"><button type="button" class="btn btn-primary" onclick="window.localStorage.setItem( "parklotSelected", JSON.stringify(locations[0]) );">Atualizar e Estacionar</button></a><br><br>' );
-
       }
-
         var value = end;
-
-        $("#locationInfo").html( '<b>Sua localização atual é:</b><br><br><input type="text" name="locationInput" class="form-control" id="locationInput" placeholder="Localização" value="' + value + '"/> <br><a href="vehicles.html"><button type="button" onclick="window.localStorage.setItem( "parklotSelected", JSON.stringify(locations[0]) );" class="btn btn-primary" >Atualizar e Estacionar</button></a><br><br>' );
-	  
-    });
+        $("#locationInfo").html( '<b>Sua localização atual é:</b><br><br><input type="text" name="locationInput" class="form-control" id="locationInput" placeholder="Localização" value="' + value + '"/> <br><a href="vehicles.html"><button type="button" onclick="window.localStorage.setItem( "parklotSelected", JSON.stringify(locations[0]) );" class="btn btn-primary" >Atualizar e Estacionar</button></a><br><br>' );        
+        
+        myMap();	  
+    });    
   }
-  
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

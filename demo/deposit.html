@@ -160,8 +160,7 @@
   <div class="content-wrapper" style="min-height: 883px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Adicionar Créditos<small>Resumo
-</small>
+      <h1>Adicionar Créditos<small>Resumo</small>
       </h1>
       
     </section>
@@ -182,7 +181,7 @@
           </div>
         </div>
         <div class="box-body">
-    Seu saldo atual é de<br><h3 id="balanceValue">Carregando...</h3>
+    Seu saldo atual é de: <br><h3 id="balanceValue">Carregando...</h3>
 </div></div>
         <!-- /.box-body -->
         
@@ -202,10 +201,15 @@
 
 <div class="col-md-3">
   <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
-    <input type="hidden" name="code" value="05897C123333F7AEE4181F86B021BBFA" />
-	  <input type="hidden" name="iot" value="button" />
-    <button id="btn1" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success">R$ 10,00</button>
+<!--      <input type="hidden" name="code" value="05897C123333F7AEE4181F86B021BBFA" />-->
+      <input type="hidden" name="code" value="05897C123333F7AEE4181F86B021BBFA" />
+      <input type="hidden" name="iot" value="button" />
+      <input type="hidden" name="produto_valor" id="produto_valor" value="4.40" />
+<!--    <button id="btn1" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success">R$ 10,00</button>-->
+    <button id="btn1" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success" value="4,40">R$ 4,40 - 01 RD</button>
   </form>
+    
+    
 	<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 </div>
 
@@ -213,23 +217,31 @@
   <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
     <input type="hidden" name="code" value="61EF15788F8FA17EE4CF4FB68C453043" />
     <input type="hidden" name="iot" value="button" />
-    <button id="btn2" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success">R$ 20,00</button>
+      <input type="hidden" name="produto_valor" id="produto_valor" value="8.80" />
+    <button id="btn2" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success" value="8,8">R$ 8,80 - 02 RD</button>
   </form>
   <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 </div>
+            
+            
 <div class="col-md-3">
   <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
     <input type="hidden" name="code" value="DE3CD133262697CBB41DCFA2D4F809D6" />
     <input type="hidden" name="iot" value="button" />
-    <button id="btn3" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success">R$ 30,00</button>
+    <input type="hidden" name="produto_valor" id="produto_valor" value="44.00" />
+    <button id="btn3" onclick="showPaymentInfo()" type="submit" class="btn btn-block btn-success" value="44,00">R$ 44,00 - 10 RD</button>
     </form>
     <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 </div>
+            
+            
 <div class="col-md-3">
   <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
     <input type="hidden" name="code" value="332F59021414E99444D83F9B946DD39B" />
     <input type="hidden" name="iot" value="button" />
-        <button onclick="showPaymentInfo()" id="btn4" type="submit" class="btn btn-block btn-success">R$ 50,00</button>
+    <input type="hidden" name="produto_valor" id="produto_valor" value="88.00" />
+      
+        <button onclick="showPaymentInfo()" id="btn4" type="submit" class="btn btn-block btn-success" value="88,00">R$ 88,00 - 20 RD</button>
       </form>
       <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 </div>
@@ -275,15 +287,13 @@
   <footer class="main-footer" style="font-size:13px">
     <div class="pull-right hidden-xs">
       <b>Versão</b> 3.1.0
-    </div>
-	PREFEITURA MUNICIPAL DE BRAGANÇA PAULISTA<br>
-	Secretaria Municipal de Mobilidade Urbana<br>
-	http://www.braganca.sp.gov.br<br>
-	<br><br>
-	Transitabile Sistema de Controle de Vagas Automotivas Ltda<br>
+    </div><p>PREFEITURA MUNICIPAL DE BELO HORIZONTE<br>
+	BHTRANS - Empresa de Transporte Público de BH<br>
+	<a href="bhtrans.pbh.gov.br">www.bhtrans.pbh.gov.br</a></p>
+	<p>Transitabile Sistema de Controle de Vagas Automotivas Ltda<br>
 	CNPJ: 28.729.743/0001-16<br>
 	www.transitabile.com.br<br>
-	contato@transitabile.com.br
+	contato@transitabile.com.br</p>
   </footer>
 
   <!-- Control Sidebar -->
@@ -305,7 +315,7 @@
 	$.widget.bridge('uibutton', $.ui.button);
 
 	function showPaymentInfo( id ) {
-	
+	console.log(id);
 		$('#10').css('display', 'none');
 		$('#20').css('display', 'none');
 		$('#30').css('display', 'none');
@@ -343,7 +353,24 @@
       $("#cp").show();
     }
 
-	$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );	  
+    if(1>0){
+//    if(window.localStorage.getItem( "balance" )!=0){
+//        var creditos = window.localStorage.getItem( "balance" );
+                
+//        valor em reais
+        var creditos = 10;
+//           valor em RDs, varia conforme regiao
+        var calcRd = Math.floor((creditos / 4.4));
+        
+        var creditRD = calcRd;
+    }else{
+        
+    }
+    
+    
+    creditRD>1?$("#balanceValue").html( creditRD + " - RDs" ):$("#balanceValue").html( creditRD + " - RD" );
+//	$("#balanceValue").html( creditRD + " - RD" );	  
+//	$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );	  
 
 	function logout() {
 		window.localStorage.clear();
