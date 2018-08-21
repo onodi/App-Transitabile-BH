@@ -45,7 +45,8 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-          <span class="glyphicon glyphicon-list-alt" style="width: 40px; text-align: left"></span>Termos de aceite
+          <span class="glyphicon glyphicon-list-alt" style="width: 170px; text-align: left"> Termos de aceite</span>
+          
           </a>
         </h4>
       </div>
@@ -151,8 +152,8 @@ O USUÁRIO para utilizar o aplicativo da DISTRIBUIDORA deverá ler e aceitar os 
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-          <span class="glyphicon glyphicon-list-alt" style="width: 30px; text-align: left"></span>
-          Regulamento<br></a>
+          <span class="glyphicon glyphicon-list-alt" style="width: 170px; text-align: left"> Regulamento</span>
+          <br></a>
         </h4>
       </div>
       
@@ -182,10 +183,10 @@ O USUÁRIO para utilizar o aplicativo da DISTRIBUIDORA deverá ler e aceitar os 
   </div> 
 </div>      
     </div>
-    <button type="button" class="btn btn-default col-md-12 btn-md" onclick="registerTerms()" style="width: 90%; margin-left: 5%">
-      Li e estou de acordo com os <br>Termos e Regulamento Acima
-    </button>
     <br>
+    <div class="checkbox">
+      <label><input id="termos" type="checkbox" value="" onclick="registerTerms()" style="text-align: center"> Li e estou de acordo com os Termos e Regulamento Acima</label>
+    </div>
     <div>
       <a href="register.html">Voltar</a>
     </div>  
@@ -216,6 +217,14 @@ contato@transitabile.com.br
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
+
+<script>
+  var terms = window.localStorage.getItem("Valor");
+  if (terms == "true") {
+    var ValidaTermos = document.getElementById('termos');
+    ValidaTermos.checked = true;
+  }
+</script>
 
 <script>
 function registerTerms() {
