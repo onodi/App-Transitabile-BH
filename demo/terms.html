@@ -39,7 +39,7 @@
     <p class="login-box-msg">Termos de aceite e uso do aplicativo</p>
 
     <div class="social-auth-links text-center">
-    <div class="container">
+    <div class="container col-md-12">
   <div class="panel-group" id="accordion">
     <div class="panel panel-default panel panel-primary btn-style">
       <div class="panel-heading">
@@ -182,16 +182,22 @@ O USUÁRIO para utilizar o aplicativo da DISTRIBUIDORA deverá ler e aceitar os 
   </div> 
 </div>      
     </div>
-    <div class="checkbox">
-        <label><input type="checkbox" value="" style="text-align: center" onclick="registerTerms()"> Li e estou de acordo com os Termos e Regulamento Acima</label>
-    </div>
+    <button type="button" class="btn btn-default col-md-12 btn-md" onclick="registerTerms()" style="width: 90%; margin-left: 5%">
+      Li e estou de acordo com os <br>Termos e Regulamento Acima
+    </button>
+    <br>
+    <div>
+      <a href="register.html">Voltar</a>
+    </div>  
   <!-- /.form-box -->
 </div>
+
 <!-- /.register-box -->
+
 
 <div style="text-align: center; color:white; font-size: 13px;">
 <br>
-    <img src="dist/img/logo-app-bh.png" style="width:80%">
+    <img src="dist/img/logo-app-bh.png" style="width:80%; margin-top: 5%">
     <br><br>
 PREFEITURA BELO HORIZONTE<br>
 ESTACIONAMENTO ROTATIVO BELO HORIZONTE<br>    
@@ -210,12 +216,14 @@ contato@transitabile.com.br
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
+
 <script>
 function registerTerms() {
     window.location.href = "register.html";
     var terms = window.localStorage.setItem("Valor", true);
 }
 </script>
+
 <script>
 
 	$(function () {
