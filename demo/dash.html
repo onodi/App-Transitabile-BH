@@ -194,7 +194,7 @@
           <!-- small box -->
           <div id="boxCredits"  style="cursor:pointer" class="small-box bg-green">
             <div class="inner">
-              <h3 id="balanceValue">R$ 0</h3>
+              <h3 id="balanceValue"0 RDs</h3>
 
               <p>Seus Créditos</p>
             </div>
@@ -422,21 +422,6 @@
 		   
 		});
     
-        
-//var settings = {
-//  "async": true,
-//  "crossDomain": true,
-//  "url": "http://transitabile.com.br/api.php?userid=44&type=reportvehicle&plate=ABC1234",
-//  "method": "POST",
-//  "headers": {
-//    "Cache-Control": "no-cache",
-//    "Postman-Token": "ed372f02-0874-4fc3-8443-cc368a3db0f5"
-//  }
-//}
-//
-//$.ajax(settings).done(function (response) {
-//  console.log(response);
-//});
 		
 //	
 //		$("#addVehicleForm").submit( function ( e ) {
@@ -557,7 +542,30 @@
 			
 		}
 		
-		$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );		
+		//$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );		
+		
+		
+		
+		if(1>0){
+            //    if(window.localStorage.getItem( "balance" )!=0){
+            //        var creditos = window.localStorage.getItem( "balance" );
+                
+        //        valor em reais
+                  var creditos = 10;
+        //           valor em RDs, varia conforme regiao
+                  var calcRd = Math.floor((creditos / 4.4));
+                  window.localStorage.setItem("creditoRD", calcRd);
+                  var creditRD = calcRd;
+               }else{}
+               var bal = window.localStorage.getItem( "balance" ); 
+               var cRD = window.localStorage.getItem( "creditoRD" ); 
+        
+//		$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) + " | " + window.localStorage.getItem( "creditoRD" ) + " RD" );		
+//		$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );
+               creditRD>1?$("#balanceValue").html( creditRD + " - RDs" ):$("#balanceValue").html( creditRD + " - RD" );
+		
+		
+		
 		
 	}
 	
