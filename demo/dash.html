@@ -194,7 +194,7 @@
           <!-- small box -->
           <div id="boxCredits"  style="cursor:pointer" class="small-box bg-green">
             <div class="inner">
-              <h3 id="balanceValue">R$ 0</h3>
+              <h3 id="balanceValue">0 RDs</h3>
 
               <p>Seus Créditos</p>
             </div>
@@ -354,12 +354,6 @@
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-    
-    
-//    http://transitabile.com.br/api.php?userid=1&type=reportvehicle&plate=PVD5247
-    
-    
-    
     		var requestURL = 'https://transitabile.com.br/api.php?userid=' + window.localStorage.getItem( "id" ) + '&type=getvehicles';
     		
 		$.ajax({
@@ -560,6 +554,39 @@
 		$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );		
 		
 	}
+	
+/**
+GCONTI inicio
+**/
+	//        var creditosRD = window.localStorage.getItem( "balance" );
+        
+        if(1>0){
+//    if(window.localStorage.getItem( "balance" )!=0){
+//        var creditos = window.localStorage.getItem( "balance" );
+                
+//        valor em reais
+        var creditos = 10;
+//           valor em RDs, varia conforme regiao
+        var calcRd = Math.floor((creditos / 4.4));
+        window.localStorage.setItem("creditoRD", calcRd);
+        var creditRD = calcRd;
+    }else{
+        
+    }
+        var bal = window.localStorage.getItem( "balance" ); 
+        var cRD = window.localStorage.getItem( "creditoRD" ); 
+        
+//		$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) + " | " + window.localStorage.getItem( "creditoRD" ) + " RD" );		
+//		$("#balanceValue").html( "R$ " + window.localStorage.getItem( "balance" ) );
+        creditRD>1?$("#balanceValue").html( creditRD + " - RDs" ):$("#balanceValue").html( creditRD + " - RD" );
+		
+	}
+	
+	
+	
+/**
+GCONTI fim
+**/
 	
 	  function logout() {
 	window.localStorage.clear();
